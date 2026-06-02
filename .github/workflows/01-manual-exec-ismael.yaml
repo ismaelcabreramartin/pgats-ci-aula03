@@ -38,7 +38,6 @@ jobs:
             # instalação dos Browsers do Playwright
             - name: Instalando Browsers do Playwright
               run: yarn playwright install
-              run: yarn add -D playwright-ctrf-json-reporter
 
             # instalação do report do Playwright
             - name: Instalando ctrf-json-reporter do Playwright
