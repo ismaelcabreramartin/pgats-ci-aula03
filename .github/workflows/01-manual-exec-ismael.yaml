@@ -40,5 +40,25 @@ jobs:
               run: yarn playwright install
             
             # executar os testes e2e
+            # rodem mesmo se houver testes falhando
             - name: Executando testes e2e
               run: yarn run e2e
+              continue-on-error: true
+
+              # ✅ ACTION DO MARKETPLACE
+            # Gera sumário de testes na aba Summary do GitHub
+            # https://github.com/marketplace/actions/publish-ctrf-test-results-report
+            - name: Publicando relatório de testes
+              uses: ctrf-io/github-actions-test-reporter@v1
+              with:
+                report-path: './ctrf-report.json'
+              if: always()    # roda mesmo se os testes falharem
+
+            # Salva o relatório HTML como artefato para download
+            - name: Salvando relatório HTML
+              uses: actions/upload-artifact@v4
+              with:
+                name: playwright-report
+                path: playwright-report/
+                retention-days: 7
+              if: always()    # roda mesmo se os testes falharem
