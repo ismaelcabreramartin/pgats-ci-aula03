@@ -1,4 +1,4 @@
-# CI de Nível 01 - Disparo Manual através de clique
+# CI de Nível 01 - Disparo Manual através de clique com relatório
 
 # nome da pipeline
 name: "Execução Manual"
