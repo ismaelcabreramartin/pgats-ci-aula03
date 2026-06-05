@@ -15,8 +15,8 @@ jobs:
     #nome do job
     e2e-tests:
         # maquina onde o job vai rodar
-        # runs-on: ubuntu-latest (from GitHub-hosted runners)
-        runs-on: self-hosted #(máquina própria, não do GitHub)
+        runs-on: ubuntu-latest # (from GitHub-hosted runners)
+        # runs-on: self-hosted #(máquina própria, não do GitHub)
 
         # passos do job
         steps:
@@ -28,9 +28,9 @@ jobs:
               with:
                   node-version: 24.x
 
-            # instalação do Yarn (máquina própria, já está instalado, então não precisa)
-            #- name: Instalando Yarn
-              #run: npm install -g yarn
+            # instalação do Yarn (comentar quando for usar máquina própria self-hosted))
+            - name: Instalando Yarn
+              run: npm install -g yarn
             
             #   instalação das dependências
             - name: Instalando dependências
