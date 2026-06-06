@@ -10,7 +10,7 @@ on:
     schedule:
     # cronograma de execução usando sintaxe cron
     # 1 - minutos, 2 - horas, 3 - dia do mês, 4 - mês, 5 - dia da semana
-      - cron: '*/3 * * * *'  # Executa diariamente às 00:00
+      - cron: '*/7 * * * *'  # Executa diariamente às 00:00
 
 #tarefas dentro da pipeline = jobs
 
