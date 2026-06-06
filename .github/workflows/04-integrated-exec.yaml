@@ -1,19 +1,20 @@
 # CI de Nível 04 - Pipeline Integrada ao Build do Código
 
 # nome da pipeline
-name: "Execução Integrada"
+name: 'N4 -Execução Integrada'
 
 # gatilhos / triggers - regras de disparo
 # gatilho manual = workflow_dispatch
 # gatilho agendado = schedule
-# gatilho por evento em outra pipeline = workflow_run
+# gatilho por conclusão de outra pipeline = workflow_run
 
 on:
   workflow_dispatch:
-#tarefas dentro da pipeline = jobs
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  push:
+    branches:
+      - master
+#tarefas dentro da pipeline = jobs
 
 jobs:
   #nome do job
@@ -29,7 +30,7 @@ jobs:
       # instalção do node
       - uses: actions/setup-node@v4
         with:
-          node-version: 24.x
+          node-version: latest
 
       # instalação do Yarn
       - name: Instalando Yarn
@@ -51,7 +52,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24.x
+          node-version: latest
 
       - name: Instalando Yarn
         run: npm install -g yarn
@@ -71,7 +72,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 24.x
+          node-version: latest
 
       - name: Instalando Yarn
         run: npm install -g yarn
@@ -84,6 +85,13 @@ jobs:
 
       - name: Executando testes E2E
         run: yarn run e2e
+
+      - name: Salvando relatórios de testes
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          path: ./playwright-report
+          name: Relatório de Testes E2E
 
   deploy:
     runs-on: ubuntu-latest
