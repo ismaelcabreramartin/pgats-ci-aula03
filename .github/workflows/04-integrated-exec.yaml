@@ -26,7 +26,7 @@ jobs:
       # instalção do node
       - uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 24.x
 
       # instalação do Yarn
       - name: Instalando Yarn
@@ -48,7 +48,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 24.x
 
       - name: Instalando Yarn
         run: npm install -g yarn
@@ -68,7 +68,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: latest
+          node-version: 24.x
 
       - name: Instalando Yarn
         run: npm install -g yarn
