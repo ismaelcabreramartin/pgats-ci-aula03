@@ -12,6 +12,9 @@ on:
   workflow_dispatch:
 #tarefas dentro da pipeline = jobs
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   #nome do job
   inspecao:
